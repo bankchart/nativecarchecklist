@@ -24,6 +24,43 @@ public class MainActivity extends Activity {
 	private final int DOCUMENT_INDEX = 4;
 	private final int SETTINT_INDEX = 5;
 
+	public void leaveChecklist(int motionin, int motionout, int fragment,
+			int menuIndex) {
+		menuIsShow[menuIndex] = false;
+		getPreferences(MODE_PRIVATE).edit().putInt("already", 1).commit();
+		FragmentTransaction ft = getFragmentManager().beginTransaction()
+				.setCustomAnimations(motionin, motionout);
+		FragmentManager fm = getFragmentManager();
+		final Fragment fmTarget = fm.findFragmentById(fragment);
+		ft.hide(fmTarget);
+		ft.commit();
+	}
+
+	public void menuToggle(int motionin, int motionout, int fragment,
+			int menuIndex) {
+		int prefer = getPreferences(MODE_PRIVATE).getInt("already", 1);
+		if (prefer == 1) {
+			menuIsShow[menuIndex] = true;
+			getPreferences(MODE_PRIVATE).edit().putInt("already", 0).commit();
+
+			FragmentTransaction ft = getFragmentManager().beginTransaction()
+					.setCustomAnimations(motionin, motionout);
+			FragmentManager fm = getFragmentManager();
+			Fragment fmTarget = fm.findFragmentById(fragment);
+			ft.show(fmTarget);
+			ft.commit();
+		} else {
+			menuIsShow[menuIndex] = false;
+			getPreferences(MODE_PRIVATE).edit().putInt("already", 1).commit();
+			FragmentTransaction ft = getFragmentManager().beginTransaction()
+					.setCustomAnimations(motionin, motionout);
+			FragmentManager fm = getFragmentManager();
+			final Fragment fmTarget = fm.findFragmentById(fragment);
+			ft.hide(fmTarget);
+			ft.commit();
+		}
+	}
+
 	public void checkSlide() {
 		for (int i = 0; i < menuIsShow.length; i++) {
 			if (menuIsShow[i]) {
@@ -90,6 +127,7 @@ public class MainActivity extends Activity {
 					break;
 				}
 			}
+			menuIsShow[i] = false;
 		}
 	}
 
@@ -197,154 +235,84 @@ public class MainActivity extends Activity {
 
 		getPreferences(MODE_PRIVATE).edit().putInt("already", 1).commit();
 
+		// engine
+
 		engineLayoutBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				int prefer = getPreferences(MODE_PRIVATE).getInt("already", 1);
-				if (prefer == 1) {
-					menuIsShow[ENGINE_INDEX] = true;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 0)
-							.commit();
-
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.engine_motion_in,
-									R.animator.engine_motion_out);
-					FragmentManager fm = getFragmentManager();
-					Fragment engineFm = fm.findFragmentById(R.id.engine_fm);
-					ft.show(engineFm);
-					ft.commit();
-				} else {
-					menuIsShow[ENGINE_INDEX] = false;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-							.commit();
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.engine_motion_in,
-									R.animator.engine_motion_out);
-					FragmentManager fm = getFragmentManager();
-					final Fragment engineFm = fm
-							.findFragmentById(R.id.engine_fm);
-					ft.hide(engineFm);
-					ft.commit();
+				int compareMenu = -1;
+				for (int i = 0; i < menuIsShow.length; i++) {
+					if (menuIsShow[i]) {
+						compareMenu = i;
+					}
 				}
+				if (compareMenu != ENGINE_INDEX) {
+					checkSlide();
+				}
+				menuToggle(R.animator.engine_motion_in,
+						R.animator.engine_motion_out, R.id.engine_fm,
+						ENGINE_INDEX);
 			}
 		});
 
 		engineBackBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				menuIsShow[ENGINE_INDEX] = false;
-				getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-						.commit();
-				FragmentTransaction ft = getFragmentManager()
-						.beginTransaction().setCustomAnimations(
-								R.animator.engine_motion_in,
-								R.animator.engine_motion_out);
-				FragmentManager fm = getFragmentManager();
-				final Fragment engineFm = fm.findFragmentById(R.id.engine_fm);
-				ft.hide(engineFm);
-				ft.commit();
+				leaveChecklist(R.animator.engine_motion_in,
+						R.animator.engine_motion_out, R.id.engine_fm,
+						ENGINE_INDEX);
 			}
 		});
 
+		// power
+
 		powerLayoutBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				int prefer = getPreferences(MODE_PRIVATE).getInt("already", 1);
-				if (prefer == 1) {
-					menuIsShow[POWER_INDEX] = true;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 0)
-							.commit();
-
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.power_motion_in,
-									R.animator.power_motion_out);
-					FragmentManager fm = getFragmentManager();
-					Fragment powerFm = fm.findFragmentById(R.id.power_fm);
-					ft.show(powerFm);
-					ft.commit();
-				} else {
-					menuIsShow[POWER_INDEX] = false;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-							.commit();
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.power_motion_in,
-									R.animator.power_motion_out);
-					FragmentManager fm = getFragmentManager();
-					final Fragment powerFm = fm.findFragmentById(R.id.power_fm);
-					ft.hide(powerFm);
-					ft.commit();
+				int compareMenu = -1;
+				for (int i = 0; i < menuIsShow.length; i++) {
+					if (menuIsShow[i]) {
+						compareMenu = i;
+					}
 				}
+				if (compareMenu != POWER_INDEX) {
+					checkSlide();
+				}
+				menuToggle(R.animator.power_motion_in,
+						R.animator.power_motion_out, R.id.power_fm, POWER_INDEX);
 			}
 		});
 
 		powerBackBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				menuIsShow[POWER_INDEX] = false;
-				getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-						.commit();
-				FragmentTransaction ft = getFragmentManager()
-						.beginTransaction().setCustomAnimations(
-								R.animator.power_motion_in,
-								R.animator.power_motion_out);
-				FragmentManager fm = getFragmentManager();
-				final Fragment powerFm = fm.findFragmentById(R.id.power_fm);
-				ft.hide(powerFm);
-				ft.commit();
+				leaveChecklist(R.animator.power_motion_in,
+						R.animator.power_motion_out, R.id.power_fm, POWER_INDEX);
 			}
 		});
 		// exterior
 
 		exterior_layoutBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				int prefer = getPreferences(MODE_PRIVATE).getInt("already", 1);
-				if (prefer == 1) {
-					menuIsShow[EXTERIOR_INDEX] = true;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 0)
-							.commit();
-
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.exterior_motion_in,
-									R.animator.exterior_motion_out);
-					FragmentManager fm = getFragmentManager();
-					Fragment exteriorFm = fm.findFragmentById(R.id.exterior_fm);
-					ft.show(exteriorFm);
-					ft.commit();
-				} else {
-					menuIsShow[EXTERIOR_INDEX] = false;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-							.commit();
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.exterior_motion_in,
-									R.animator.exterior_motion_out);
-					FragmentManager fm = getFragmentManager();
-					final Fragment exteriorFm = fm
-							.findFragmentById(R.id.exterior_fm);
-					ft.hide(exteriorFm);
-					ft.commit();
+				int compareMenu = -1;
+				for (int i = 0; i < menuIsShow.length; i++) {
+					if (menuIsShow[i]) {
+						compareMenu = i;
+					}
 				}
+				if (compareMenu != EXTERIOR_INDEX) {
+					checkSlide();
+				}
+				menuToggle(R.animator.exterior_motion_in,
+						R.animator.exterior_motion_out, R.id.exterior_fm,
+						EXTERIOR_INDEX);
 			}
 		});
 
 		exteriorBackBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				menuIsShow[EXTERIOR_INDEX] = false;
-				getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-						.commit();
-				FragmentTransaction ft = getFragmentManager()
-						.beginTransaction().setCustomAnimations(
-								R.animator.exterior_motion_in,
-								R.animator.exterior_motion_out);
-				FragmentManager fm = getFragmentManager();
-				final Fragment exteriorFm = fm
-						.findFragmentById(R.id.exterior_fm);
-				ft.hide(exteriorFm);
-				ft.commit();
+				leaveChecklist(R.animator.exterior_motion_in,
+						R.animator.exterior_motion_out, R.id.exterior_fm,
+						EXTERIOR_INDEX);
 			}
 		});
 
@@ -352,52 +320,27 @@ public class MainActivity extends Activity {
 
 		interior_layoutBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				int prefer = getPreferences(MODE_PRIVATE).getInt("already", 1);
-				if (prefer == 1) {
-					menuIsShow[INTERIOR_INDEX] = true;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 0)
-							.commit();
-
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.exterior_motion_in,
-									R.animator.exterior_motion_out);
-					FragmentManager fm = getFragmentManager();
-					Fragment interiorFm = fm.findFragmentById(R.id.interior_fm);
-					ft.show(interiorFm);
-					ft.commit();
-				} else {
-					menuIsShow[INTERIOR_INDEX] = false;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-							.commit();
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.exterior_motion_in,
-									R.animator.exterior_motion_out);
-					FragmentManager fm = getFragmentManager();
-					final Fragment interiorFm = fm
-							.findFragmentById(R.id.interior_fm);
-					ft.hide(interiorFm);
-					ft.commit();
+				int compareMenu = -1;
+				for (int i = 0; i < menuIsShow.length; i++) {
+					if (menuIsShow[i]) {
+						compareMenu = i;
+					}
 				}
+				if (compareMenu != INTERIOR_INDEX) {
+					checkSlide();
+				}
+				menuToggle(R.animator.interior_motion_in,
+						R.animator.interior_motion_out, R.id.interior_fm,
+						INTERIOR_INDEX);
 			}
 		});
 
 		interiorBackBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				menuIsShow[INTERIOR_INDEX] = false;
-				getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-						.commit();
-				FragmentTransaction ft = getFragmentManager()
-						.beginTransaction().setCustomAnimations(
-								R.animator.exterior_motion_in,
-								R.animator.exterior_motion_out);
-				FragmentManager fm = getFragmentManager();
-				final Fragment interiorFm = fm
-						.findFragmentById(R.id.interior_fm);
-				ft.hide(interiorFm);
-				ft.commit();
+				leaveChecklist(R.animator.interior_motion_in,
+						R.animator.interior_motion_out, R.id.interior_fm,
+						INTERIOR_INDEX);
 			}
 		});
 
@@ -405,52 +348,27 @@ public class MainActivity extends Activity {
 
 		document_layoutBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				int prefer = getPreferences(MODE_PRIVATE).getInt("already", 1);
-				if (prefer == 1) {
-					menuIsShow[DOCUMENT_INDEX] = true;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 0)
-							.commit();
-
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.document_motion_in,
-									R.animator.document_motion_out);
-					FragmentManager fm = getFragmentManager();
-					Fragment documentFm = fm.findFragmentById(R.id.document_fm);
-					ft.show(documentFm);
-					ft.commit();
-				} else {
-					menuIsShow[DOCUMENT_INDEX] = false;
-					getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-							.commit();
-					FragmentTransaction ft = getFragmentManager()
-							.beginTransaction().setCustomAnimations(
-									R.animator.document_motion_in,
-									R.animator.document_motion_out);
-					FragmentManager fm = getFragmentManager();
-					final Fragment documentFm = fm
-							.findFragmentById(R.id.document_fm);
-					ft.hide(documentFm);
-					ft.commit();
+				int compareMenu = -1;
+				for (int i = 0; i < menuIsShow.length; i++) {
+					if (menuIsShow[i]) {
+						compareMenu = i;
+					}
 				}
+				if (compareMenu != DOCUMENT_INDEX) {
+					checkSlide();
+				}
+				menuToggle(R.animator.document_motion_in,
+						R.animator.document_motion_out, R.id.document_fm,
+						DOCUMENT_INDEX);
 			}
 		});
 
 		documentBackBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				menuIsShow[DOCUMENT_INDEX] = false;
-				getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
-						.commit();
-				FragmentTransaction ft = getFragmentManager()
-						.beginTransaction().setCustomAnimations(
-								R.animator.document_motion_in,
-								R.animator.document_motion_out);
-				FragmentManager fm = getFragmentManager();
-				final Fragment documentFm = fm
-						.findFragmentById(R.id.document_fm);
-				ft.hide(documentFm);
-				ft.commit();
+				leaveChecklist(R.animator.document_motion_in,
+						R.animator.document_motion_out, R.id.document_fm,
+						DOCUMENT_INDEX);
 			}
 		});
 
