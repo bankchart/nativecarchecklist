@@ -1,0 +1,265 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" 
+        android:id="@+id/power_layout" >
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/power_bgdialog"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/powerRow01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/powerBackBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_button"
+                android:text="@string/backBtn"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/powerRow02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/engineLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/powerLabel"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/powerRow03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/headLightCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Head light" />
+
+            <CheckBox
+                android:id="@+id/dimmerLightCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dimmer light" />
+
+            <CheckBox
+                android:id="@+id/highBeamCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High beam" />
+
+            <CheckBox
+                android:id="@+id/dashBoardLightCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DashBoard light" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/powerRow04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/domeLightCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Dome light" />
+
+            <CheckBox
+                android:id="@+id/sideDoorsLightCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Side doors light" />
+
+            <CheckBox
+                android:id="@+id/turnsignalCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Turn signal" />
+
+            <CheckBox
+                android:id="@+id/airConditionCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Air Condition" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/powerRow05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/thermometerCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Thermometer" />
+
+            <CheckBox
+                android:id="@+id/hornCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horn" />
+
+            <CheckBox
+                android:id="@+id/windShieldWiperCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Windshieldwper" />
+
+            <CheckBox
+                android:id="@+id/rainSensorCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rain sensor" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tpowerRow06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/centerBrakeLightsCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Center brake lights" />
+
+            <CheckBox
+                android:id="@+id/defoggerBackCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Defogger back" />
+
+            <CheckBox
+                android:id="@+id/defoggerSideCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Defogger side" />
+
+            <CheckBox
+                android:id="@+id/turnSteeringsteeringToEachEndCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Turn steering wheel to each end" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/powerRow08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/setSteeringWheelCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Set stering wheel" />
+
+            <CheckBox
+                android:id="@+id/carStereoCDCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Car Stereo CD" />
+
+            <CheckBox
+                android:id="@+id/powerWindowCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Power window" />
+
+            <CheckBox
+                android:id="@+id/sideMirrorCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Side mirror" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/powerRow09"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/doorsWarningCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Doors warning" />
+
+            <CheckBox
+                android:id="@+id/seatBeltWarningCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seat belt warning" />
+
+            <CheckBox
+                android:id="@+id/handBrakeWarningCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hand brake warning" />
+
+            <CheckBox
+                android:id="@+id/digitalClockCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Digital clock" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/powerRow09"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/remoteKeyCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Remote Key" />
+
+            <CheckBox
+                android:id="@+id/centralLockCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Central lock" />
+
+            <CheckBox
+                android:id="@+id/transmissionPositionCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transmission position" />
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>
