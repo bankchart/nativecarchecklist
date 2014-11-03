@@ -11,4 +11,16 @@
     <string name="interiorLabel">Interior</string>
     <string name="documentLabel">Document</string>
     
+    <string name="setting_ratio">Setting Ratio</string>
+    <string name="priority">Priority</string>
+    <string name="lowhigh">Low\t\t\t\tHigh</string>
+    <string name="high">High</string>
+    <string name="exterior">Exterior</string>
+    <string name="interior">Interior</string>
+    <string name="power">Power</string>
+    <string name="engine">Engine</string>
+    <string name="document">Document</string>
+    <string name="saveBtn">Save</string>
+    <string name="resetBtn">Reset</string>
+    <string name="languageBtn">Change language</string>
 </resources>

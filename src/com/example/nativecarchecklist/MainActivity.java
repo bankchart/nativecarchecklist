@@ -5,11 +5,14 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.AvoidXfermode.Mode;
+import android.graphics.Color;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,7 +25,7 @@ public class MainActivity extends Activity {
 	private final int EXTERIOR_INDEX = 2;
 	private final int INTERIOR_INDEX = 3;
 	private final int DOCUMENT_INDEX = 4;
-	private final int SETTINT_INDEX = 5;
+	private final int SETTING_INDEX = 5;
 
 	public void leaveChecklist(int motionin, int motionout, int fragment,
 			int menuIndex) {
@@ -125,6 +128,18 @@ public class MainActivity extends Activity {
 					ft.hide(documentFm);
 					ft.commit();
 					break;
+				case 5:
+					getPreferences(MODE_PRIVATE).edit().putInt("already", 1)
+							.commit();
+					ft = getFragmentManager().beginTransaction()
+							.setCustomAnimations(R.animator.setting_motion_in,
+									R.animator.setting_motion_out);
+					fm = getFragmentManager();
+					final Fragment settingFm = fm
+							.findFragmentById(R.id.setting_fm);
+					ft.hide(settingFm);
+					ft.commit();
+					break;
 				}
 			}
 			menuIsShow[i] = false;
@@ -135,12 +150,18 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
+		TextView engineProgressText = (TextView) findViewById(R.id.engineProgressText);
+		/*
+		ProgressBar engineProgress = (ProgressBar) findViewById(R.id.engineProgress);
+		engineProgress.getProgressDrawable().setColorFilter(Color.BLUE, Mode.AVOID);*/
+		//engineProgressText.setTextColor(Color.WHITE);
+		//engineProgressText.setText("65");
+		
 		final LinearLayout powerLayout = (LinearLayout) findViewById(R.id.power_layout);
 		powerLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 			}
 		});
 
@@ -208,6 +229,8 @@ public class MainActivity extends Activity {
 		Fragment interiorFm = fm.findFragmentById(R.id.interior_fm);
 
 		Fragment documentFm = fm.findFragmentById(R.id.document_fm);
+		
+		Fragment settingFm = fm.findFragmentById(R.id.setting_fm);
 
 		Button engineBackBtn = (Button) findViewById(R.id.engineBackBtn);
 		Button powerBackBtn = (Button) findViewById(R.id.powerBackBtn);
@@ -221,16 +244,19 @@ public class MainActivity extends Activity {
 		ft.hide(exteriorFm);
 		ft.hide(interiorFm);
 		ft.hide(documentFm);
+		ft.hide(settingFm);
 
 		ft.commit();
 
 		LinearLayout engineLayoutBtn = (LinearLayout) findViewById(R.id.engine_layoutBtn);
+		//RelativeLayout engineLayoutBtn = (RelativeLayout) findViewById(R.id.engine_layoutBtn);
 		LinearLayout powerLayoutBtn = (LinearLayout) findViewById(R.id.power_layoutBtn);
 		LinearLayout allDialog = (LinearLayout) findViewById(R.id.engineLayout);
 		LinearLayout exterior_layoutBtn = (LinearLayout) findViewById(R.id.exterior_layoutBtn);
 		LinearLayout interior_layoutBtn = (LinearLayout) findViewById(R.id.interior_layoutBtn);
 		LinearLayout document_layoutBtn = (LinearLayout) findViewById(R.id.document_layoutBtn);
-
+		LinearLayout setting_layoutBtn = (LinearLayout) findViewById(R.id.setting_layoutBtn);
+		
 		allDialog.setAlpha(0.9f);
 
 		getPreferences(MODE_PRIVATE).edit().putInt("already", 1).commit();
@@ -372,6 +398,27 @@ public class MainActivity extends Activity {
 			}
 		});
 
+		// setting
+		
+		setting_layoutBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				int compareMenu = -1;
+				for (int i = 0; i < menuIsShow.length; i++) {
+					if (menuIsShow[i]) {
+						compareMenu = i;
+					}
+				}
+				if (compareMenu != SETTING_INDEX) {
+					checkSlide();
+				}
+				menuToggle(R.animator.setting_motion_in,
+						R.animator.setting_motion_out, R.id.setting_fm,
+						SETTING_INDEX);
+			}
+		});
+
+		
+		
 	}
 
 }

@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Interior extends Fragment {
+public class Setting extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.interior_fm, container, false);
+		View v = inflater.inflate(R.layout.setting_fm, container, false);
 		return v;
 	}
 }
