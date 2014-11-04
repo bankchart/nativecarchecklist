@@ -49,8 +49,7 @@
             android:max="100"
             android:progressDrawable="@drawable/progress_bg"
             android:minHeight="10dp"
-            android:minWidth="90dp"
-            android:progress="65" />
+            android:minWidth="90dp" />
 
      <TextView
             android:id="@+id/engineProgressText"
@@ -61,7 +60,6 @@
             android:layout_marginTop="-23dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="65 %"
             android:textColor="@color/orange"
             android:textSize="@dimen/size1"/>
             
@@ -100,8 +98,7 @@
             android:max="100"
             android:progressDrawable="@drawable/progress_bg"
             android:minHeight="10dp"
-            android:minWidth="90dp"
-            android:progress="65" />
+            android:minWidth="90dp"/>
 
      <TextView
             android:id="@+id/exteriorProgressText"
@@ -112,7 +109,6 @@
             android:layout_marginTop="-23dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="65 %"
             android:textColor="@color/orange"
             android:textSize="@dimen/size1"/>
     </LinearLayout>
@@ -150,8 +146,7 @@
             android:max="100"
             android:progressDrawable="@drawable/progress_bg"
             android:minHeight="10dp"
-            android:minWidth="90dp"
-            android:progress="65" />
+            android:minWidth="90dp"/>
 
      <TextView
             android:id="@+id/powerProgressText"
@@ -162,7 +157,6 @@
             android:layout_marginTop="-23dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="65 %"
             android:textColor="@color/orange"
             android:textSize="@dimen/size1"/>
         
@@ -201,8 +195,7 @@
             android:max="100"
             android:progressDrawable="@drawable/progress_bg"
             android:minHeight="10dp"
-            android:minWidth="90dp"
-            android:progress="65" />
+            android:minWidth="90dp" />
 
      <TextView
             android:id="@+id/interiorProgressText"
@@ -213,7 +206,6 @@
             android:layout_marginTop="-23dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="65 %"
             android:textColor="@color/orange"
             android:textSize="@dimen/size1"/>
     </LinearLayout>
@@ -251,19 +243,17 @@
             android:max="100"
             android:progressDrawable="@drawable/progress_bg"
             android:minHeight="10dp"
-            android:minWidth="90dp"
-            android:progress="65" />
+            android:minWidth="90dp" />
 
      <TextView
-            android:id="@+id/interiorProgressText"
+            android:id="@+id/documentProgressText"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_alignBottom="@id/interiorProgress"
+            android:layout_alignBottom="@id/documentProgress"
             android:layout_marginLeft="125dp"
             android:layout_marginTop="-23dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="65 %"
             android:textColor="@color/orange"
             android:textSize="@dimen/size1"/>
     </LinearLayout>

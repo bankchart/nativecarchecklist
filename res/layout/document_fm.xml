@@ -2,17 +2,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_centerHorizontal="true"
-    android:orientation="vertical"
-    android:id="@+id/document_layout" >
-
-    <LinearLayout
-        android:id="@+id/document_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal" >
-    </LinearLayout>
+    android:orientation="vertical" >
 
     <TableLayout
+        android:id="@+id/document_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/document_bgdialog"
@@ -60,13 +53,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Insurance paper" />
+                android:text="Insurance paper"
+                android:onClick="onClickChecked"
+                android:tag="document" />
 
             <CheckBox
                 android:id="@+id/actTaxCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Act &amp; Tax label" />
+                android:text="Act &amp; Tax label"
+                android:onClick="onClickChecked"
+                android:tag="document" />
         </TableRow>
 
         <TableRow
@@ -79,13 +76,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Bill" />
+                android:text="Bill"
+                android:onClick="onClickChecked"
+                android:tag="document" />
 
             <CheckBox
                 android:id="@+id/licensePlateCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="License Plate" />
+                android:text="License Plate"
+                android:onClick="onClickChecked"
+                android:tag="document" />
         </TableRow>
 
         <TableRow
@@ -98,13 +99,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="License manual" />
+                android:text="License manual"
+                android:onClick="onClickChecked"
+                android:tag="document" />
 
             <CheckBox
                 android:id="@+id/carPartPaperCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Car part paper" />
+                android:text="Car part paper" 
+                android:onClick="onClickChecked"
+                android:tag="document" />
         </TableRow>
 
         <TableRow
@@ -117,14 +122,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Car manual" />
+                android:text="Car manual"
+                android:onClick="onClickChecked"
+                android:tag="document" />
 
             <CheckBox
                 android:id="@+id/licenseRegisterCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
-                android:text="License register" />
+                android:text="License register"
+                android:onClick="onClickChecked"
+                android:tag="document" />
         </TableRow>
     </TableLayout>
 

@@ -4,13 +4,6 @@
     android:layout_centerHorizontal="true"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/engine_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal" >
-    </LinearLayout>
-
     <!--
     LinearLayout
         android:id="@+id/engine_linear"
@@ -75,6 +68,7 @@
     -->
 
     <TableLayout
+        android:id="@+id/engine_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/engine_bgdialog"
@@ -122,13 +116,17 @@
                 android:id="@+id/checkBox1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hood" />
+                android:text="Hood"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="trunk" />
+                android:text="trunk"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
         </TableRow>
 
         <TableRow
@@ -141,13 +139,17 @@
                 android:id="@+id/checkBox3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="The engine" />
+                android:text="The engine"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
 
             <CheckBox
                 android:id="@+id/checkBox4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Water coolant" />
+                android:text="Water coolant"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
         </TableRow>
 
         <TableRow
@@ -160,13 +162,17 @@
                 android:id="@+id/checkBox5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Brake fluid" />
+                android:text="Brake fluid"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
 
             <CheckBox
                 android:id="@+id/checkBox6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Engine oil" />
+                android:text="Engine oil"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
         </TableRow>
 
         <TableRow
@@ -179,13 +185,17 @@
                 android:id="@+id/checkBox7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gear oil" />
+                android:text="Gear oil"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
 
             <CheckBox
                 android:id="@+id/checkBox8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Belt" />
+                android:text="Belt"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
         </TableRow>
 
         <TableRow
@@ -198,13 +208,17 @@
                 android:id="@+id/checkBox9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Engine sound" />
+                android:text="Engine sound"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
 
             <CheckBox
                 android:id="@+id/checkBox10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sound in carbine" />
+                android:text="Sound in carbine"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
         </TableRow>
 
         <TableRow
@@ -218,7 +232,9 @@
                 android:id="@+id/checkBox11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wipe liquid level" />
+                android:text="Wipe liquid level"
+                android:onClick="onClickChecked"
+                android:tag="engine" />
         </TableRow>
     </TableLayout>
 

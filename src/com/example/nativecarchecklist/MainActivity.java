@@ -1,5 +1,8 @@
 package com.example.nativecarchecklist;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
@@ -13,7 +16,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.CheckBox;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -26,6 +31,74 @@ public class MainActivity extends Activity {
 	private final int INTERIOR_INDEX = 3;
 	private final int DOCUMENT_INDEX = 4;
 	private final int SETTING_INDEX = 5;
+	private final int POWER_SIZE = 27;
+	private final int ENGINE_SIZE = 11;
+	private final int EXTERIOR_SIZE = 9;
+	private final int INTERIOR_SIZE = 15;
+	private final int DOCUMENT_SIZE = 9;
+
+	private DetailList powerList = new DetailList("power", POWER_SIZE);
+	private DetailList engineList = new DetailList("engine", ENGINE_SIZE);
+	private DetailList exteriorList = new DetailList("exterior", EXTERIOR_SIZE);
+	private DetailList interiorList = new DetailList("interior", INTERIOR_SIZE);
+	private DetailList documentList = new DetailList("document", DOCUMENT_SIZE);
+
+	private TextView engineProgressText;
+	private TextView powerProgressText;
+	private TextView exteriorProgressText;
+	private TextView interiorProgressText;
+	private TextView documentProgressText;
+
+	private ProgressBar engineProgress;
+	private ProgressBar powerProgress;
+	private ProgressBar exteriorProgress;
+	private ProgressBar interiorProgress;
+	private ProgressBar documentProgress;
+
+	public void onClickChecked(View v) {
+		String yourCheck = (String) v.getTag();
+		if ("power".equals(yourCheck)) {
+			if (((CheckBox) v).isChecked()) {
+				powerList.addChecked();
+			} else {
+				powerList.unChecked();
+			}
+			powerProgress.setProgress(powerList.getChecked());
+			powerProgressText.setText(powerList.getChecked() + " %");
+		} else if ("engine".equals(yourCheck)) {
+			if (((CheckBox) v).isChecked()) {
+				engineList.addChecked();
+			} else {
+				engineList.unChecked();
+			}
+			engineProgress.setProgress(engineList.getChecked());
+			engineProgressText.setText(engineList.getChecked() + " %");
+		} else if ("exterior".equals(yourCheck)) {
+			if (((CheckBox) v).isChecked()) {
+				exteriorList.addChecked();
+			} else {
+				exteriorList.unChecked();
+			}
+			exteriorProgress.setProgress(exteriorList.getChecked());
+			exteriorProgressText.setText(exteriorList.getChecked() + " %");
+		} else if ("interior".equals(yourCheck)) {
+			if (((CheckBox) v).isChecked()) {
+				interiorList.addChecked();
+			} else {
+				interiorList.unChecked();
+			}
+			interiorProgress.setProgress(interiorList.getChecked());
+			interiorProgressText.setText(interiorList.getChecked() + " %");
+		} else { // document
+			if (((CheckBox) v).isChecked()) {
+				documentList.addChecked();
+			} else {
+				documentList.unChecked();
+			}
+			documentProgress.setProgress(documentList.getChecked());
+			documentProgressText.setText(documentList.getChecked() + " %");
+		}
+	}
 
 	public void leaveChecklist(int motionin, int motionout, int fragment,
 			int menuIndex) {
@@ -150,22 +223,42 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		TextView engineProgressText = (TextView) findViewById(R.id.engineProgressText);
+
+		engineProgressText = (TextView) findViewById(R.id.engineProgressText);
+		powerProgressText = (TextView) findViewById(R.id.powerProgressText);
+		exteriorProgressText = (TextView) findViewById(R.id.exteriorProgressText);
+		interiorProgressText = (TextView) findViewById(R.id.interiorProgressText);
+		documentProgressText = (TextView) findViewById(R.id.documentProgressText);
+
+		engineProgress = (ProgressBar) findViewById(R.id.engineProgress);
+		powerProgress = (ProgressBar) findViewById(R.id.powerProgress);
+		exteriorProgress = (ProgressBar) findViewById(R.id.exteriorProgress);
+		interiorProgress = (ProgressBar) findViewById(R.id.interiorProgress);
+		documentProgress = (ProgressBar) findViewById(R.id.documentProgress);
+
+		engineProgressText.setText("0 %");
+		powerProgressText.setText("0 %");
+		exteriorProgressText.setText("0 %");
+		interiorProgressText.setText("0 %");
+		documentProgressText.setText("0 %");
+
 		/*
-		ProgressBar engineProgress = (ProgressBar) findViewById(R.id.engineProgress);
-		engineProgress.getProgressDrawable().setColorFilter(Color.BLUE, Mode.AVOID);*/
-		//engineProgressText.setTextColor(Color.WHITE);
-		//engineProgressText.setText("65");
-		
-		final LinearLayout powerLayout = (LinearLayout) findViewById(R.id.power_layout);
+		 * ProgressBar engineProgress = (ProgressBar)
+		 * findViewById(R.id.engineProgress);
+		 * engineProgress.getProgressDrawable().setColorFilter(Color.BLUE,
+		 * Mode.AVOID);
+		 */
+		// engineProgressText.setTextColor(Color.WHITE);
+		// engineProgressText.setText("65");
+
+		final TableLayout powerLayout = (TableLayout) findViewById(R.id.power_layout);
 		powerLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 			}
 		});
 
-		final LinearLayout engineLayout = (LinearLayout) findViewById(R.id.engine_layout);
+		final TableLayout engineLayout = (TableLayout) findViewById(R.id.engine_layout);
 		engineLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -173,7 +266,7 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		final LinearLayout exteriorLayout = (LinearLayout) findViewById(R.id.exterior_layout);
+		final TableLayout exteriorLayout = (TableLayout) findViewById(R.id.exterior_layout);
 		exteriorLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -181,7 +274,7 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		final LinearLayout interiorLayout = (LinearLayout) findViewById(R.id.interior_layout);
+		final TableLayout interiorLayout = (TableLayout) findViewById(R.id.interior_layout);
 		interiorLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -191,6 +284,14 @@ public class MainActivity extends Activity {
 
 		final LinearLayout documentLayout = (LinearLayout) findViewById(R.id.document_layout);
 		documentLayout.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+			}
+		});
+
+		final TableLayout settingLayout = (TableLayout) findViewById(R.id.setting_layout);
+		settingLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
@@ -229,7 +330,7 @@ public class MainActivity extends Activity {
 		Fragment interiorFm = fm.findFragmentById(R.id.interior_fm);
 
 		Fragment documentFm = fm.findFragmentById(R.id.document_fm);
-		
+
 		Fragment settingFm = fm.findFragmentById(R.id.setting_fm);
 
 		Button engineBackBtn = (Button) findViewById(R.id.engineBackBtn);
@@ -249,14 +350,15 @@ public class MainActivity extends Activity {
 		ft.commit();
 
 		LinearLayout engineLayoutBtn = (LinearLayout) findViewById(R.id.engine_layoutBtn);
-		//RelativeLayout engineLayoutBtn = (RelativeLayout) findViewById(R.id.engine_layoutBtn);
+		// RelativeLayout engineLayoutBtn = (RelativeLayout)
+		// findViewById(R.id.engine_layoutBtn);
 		LinearLayout powerLayoutBtn = (LinearLayout) findViewById(R.id.power_layoutBtn);
 		LinearLayout allDialog = (LinearLayout) findViewById(R.id.engineLayout);
 		LinearLayout exterior_layoutBtn = (LinearLayout) findViewById(R.id.exterior_layoutBtn);
 		LinearLayout interior_layoutBtn = (LinearLayout) findViewById(R.id.interior_layoutBtn);
 		LinearLayout document_layoutBtn = (LinearLayout) findViewById(R.id.document_layoutBtn);
 		LinearLayout setting_layoutBtn = (LinearLayout) findViewById(R.id.setting_layoutBtn);
-		
+
 		allDialog.setAlpha(0.9f);
 
 		getPreferences(MODE_PRIVATE).edit().putInt("already", 1).commit();
@@ -399,7 +501,7 @@ public class MainActivity extends Activity {
 		});
 
 		// setting
-		
+
 		setting_layoutBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				int compareMenu = -1;
@@ -417,8 +519,6 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		
-		
 	}
 
 }

@@ -2,17 +2,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_centerHorizontal="true"
-    android:orientation="vertical"
-    android:id="@+id/interior_layout" >
-
-    <LinearLayout
-        android:id="@+id/interior_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal" >
-    </LinearLayout>
+    android:orientation="vertical" >
 
     <TableLayout
+        android:id="@+id/interior_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/interior_bgdialog"
@@ -60,13 +53,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Seat" />
+                android:text="Seat"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
 
             <CheckBox
                 android:id="@+id/woodConsoleCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wood console" />
+                android:text="Wood console"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
             
         </TableRow>
 
@@ -80,13 +77,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Leatherette steering wheel" />
+                android:text="Leatherette steering wheel"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
 
             <CheckBox
                 android:id="@+id/transmissionCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Transmission" />
+                android:text="Transmission"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
 		</TableRow>
 		
         <TableRow
@@ -98,13 +99,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Side doors" />
+                android:text="Side doors"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
 
             <CheckBox
                 android:id="@+id/dashBoardCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DashBoard" />
+                android:text="DashBoard"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
         </TableRow>
 
         <TableRow
@@ -117,13 +122,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Carpet" />
+                android:text="Carpet"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
 
             <CheckBox
                 android:id="@+id/curtainCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Curtain" />
+                android:text="Curtain"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
 		</TableRow>
             
 
@@ -154,13 +163,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Lid oil opener" />
+                android:text="Lid oil opener"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
             
             <CheckBox
                 android:id="@+id/seatSettingCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Seat setting" />
+                android:text="Seat setting"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
         </TableRow>
         
         <TableRow
@@ -172,13 +185,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Seat belt" />
+                android:text="Seat belt"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
             
             <CheckBox
                 android:id="@+id/trunkReleaseCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trunk release" />
+                android:text="Trunk release"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
         </TableRow>
 
      	<TableRow
@@ -190,13 +207,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Brake pedal" />
+                android:text="Brake pedal"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
             
             <CheckBox
                 android:id="@+id/acceleratorCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Accelerator" />
+                android:text="Accelerator"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
         </TableRow>
         
      	<TableRow
@@ -209,7 +230,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="30dp"
-                android:text="Hand brake" />
+                android:text="Hand brake"
+                android:onClick="onClickChecked"
+                android:tag="interior" />
         </TableRow>
     </TableLayout>
 
