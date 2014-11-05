@@ -130,10 +130,26 @@
                 android:id="@+id/licenseRegisterCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
                 android:text="License register"
                 android:onClick="onClickChecked"
                 android:tag="document" />
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/documentRow07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/giftCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="30dp"
+                android:text="Gift"
+                android:onClick="onClickChecked"
+                android:tag="document" />
+           
         </TableRow>
     </TableLayout>
 

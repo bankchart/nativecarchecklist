@@ -57,46 +57,112 @@ public class MainActivity extends Activity {
 
 	public void onClickChecked(View v) {
 		String yourCheck = (String) v.getTag();
+		System.out.println("test");
 		if ("power".equals(yourCheck)) {
+			double divide = powerList.divideProgress();
+			int percentValue;
+			double tmp;
 			if (((CheckBox) v).isChecked()) {
 				powerList.addChecked();
+				tmp = powerList.getPercent() + divide;
+				percentValue =  (int) tmp;
 			} else {
 				powerList.unChecked();
+				tmp = powerList.getPercent() - divide;
+				percentValue =  (int) tmp;				
 			}
-			powerProgress.setProgress(powerList.getChecked());
-			powerProgressText.setText(powerList.getChecked() + " %");
+			
+			if (100 - percentValue < divide || percentValue > 100){
+				percentValue = 100;
+				tmp = 100;
+			}
+			powerList.setPercent(tmp);
+			powerProgress.setProgress(percentValue);
+			powerProgressText.setText(percentValue + " %");
 		} else if ("engine".equals(yourCheck)) {
+			double divide = engineList.divideProgress();
+			int percentValue;
+			double tmp;
 			if (((CheckBox) v).isChecked()) {
 				engineList.addChecked();
+				tmp = engineList.getPercent() + divide;
+				percentValue =  (int) tmp;
 			} else {
 				engineList.unChecked();
+				tmp = engineList.getPercent() - divide;
+				percentValue =  (int) tmp;				
 			}
-			engineProgress.setProgress(engineList.getChecked());
-			engineProgressText.setText(engineList.getChecked() + " %");
+			
+			if (100 - percentValue < divide || percentValue > 100){
+				percentValue = 100;
+				tmp = 100;
+			}
+			engineList.setPercent(tmp);
+			engineProgress.setProgress(percentValue);
+			engineProgressText.setText(percentValue + " %");
 		} else if ("exterior".equals(yourCheck)) {
+			double divide = exteriorList.divideProgress();
+			int percentValue;
+			double tmp;
 			if (((CheckBox) v).isChecked()) {
 				exteriorList.addChecked();
+				tmp = exteriorList.getPercent() + divide;
+				percentValue =  (int) tmp;
 			} else {
 				exteriorList.unChecked();
+				tmp = exteriorList.getPercent() - divide;
+				percentValue =  (int) tmp;				
 			}
-			exteriorProgress.setProgress(exteriorList.getChecked());
-			exteriorProgressText.setText(exteriorList.getChecked() + " %");
+			
+			if (100 - percentValue < divide || percentValue > 100){
+				percentValue = 100;
+				tmp = 100;
+			}
+			exteriorList.setPercent(tmp);
+			exteriorProgress.setProgress(percentValue);
+			exteriorProgressText.setText(percentValue + " %");
 		} else if ("interior".equals(yourCheck)) {
+			double divide = interiorList.divideProgress();
+			int percentValue;
+			double tmp;
 			if (((CheckBox) v).isChecked()) {
 				interiorList.addChecked();
+				tmp = interiorList.getPercent() + divide;
+				percentValue =  (int) tmp;
 			} else {
 				interiorList.unChecked();
+				tmp = interiorList.getPercent() - divide;
+				percentValue =  (int) tmp;				
 			}
-			interiorProgress.setProgress(interiorList.getChecked());
-			interiorProgressText.setText(interiorList.getChecked() + " %");
+			
+			if (100 - percentValue < divide || percentValue > 100){
+				percentValue = 100;
+				tmp = 100;
+			}
+			interiorList.setPercent(tmp);
+			interiorProgress.setProgress(percentValue);
+			interiorProgressText.setText(percentValue + " %");
 		} else { // document
+			double divide = documentList.divideProgress();
+			int percentValue;
+			double tmp;
 			if (((CheckBox) v).isChecked()) {
 				documentList.addChecked();
+				tmp = documentList.getPercent() + divide;
+				percentValue =  (int) tmp;
 			} else {
 				documentList.unChecked();
+				tmp = documentList.getPercent() - divide;
+				percentValue =  (int) tmp;				
 			}
-			documentProgress.setProgress(documentList.getChecked());
-			documentProgressText.setText(documentList.getChecked() + " %");
+			
+			if (100 - percentValue < divide || percentValue > 100){
+				percentValue = 100;
+				tmp = 100;
+			}
+			documentList.setPercent(tmp);
+			documentProgress.setProgress(percentValue);
+			documentProgressText.setText(percentValue + " %");
 		}
 	}
 
