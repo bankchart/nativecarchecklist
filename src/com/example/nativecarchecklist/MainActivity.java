@@ -1,23 +1,19 @@
 package com.example.nativecarchecklist;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.graphics.AvoidXfermode.Mode;
-import android.graphics.Color;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -48,12 +44,20 @@ public class MainActivity extends Activity {
 	private TextView exteriorProgressText;
 	private TextView interiorProgressText;
 	private TextView documentProgressText;
+	private TextView ratingLabel;
+	private TextView ratingPercent;
 
 	private ProgressBar engineProgress;
 	private ProgressBar powerProgress;
 	private ProgressBar exteriorProgress;
 	private ProgressBar interiorProgress;
 	private ProgressBar documentProgress;
+	private ProgressBar ratingProgress;
+	private SeekBar engineVolume;
+	private SeekBar powerVolume;
+	private SeekBar exteriorVolume;
+	private SeekBar interiorVolume;
+	private SeekBar documentVolume;
 
 	public void onClickChecked(View v) {
 		String yourCheck = (String) v.getTag();
@@ -164,6 +168,8 @@ public class MainActivity extends Activity {
 			documentProgress.setProgress(percentValue);
 			documentProgressText.setText(percentValue + " %");
 		}
+		
+		
 	}
 
 	public void leaveChecklist(int motionin, int motionout, int fragment,
@@ -290,11 +296,15 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		ratingProgress = (ProgressBar) findViewById(R.id.ratingProgress);
+		
 		engineProgressText = (TextView) findViewById(R.id.engineProgressText);
 		powerProgressText = (TextView) findViewById(R.id.powerProgressText);
 		exteriorProgressText = (TextView) findViewById(R.id.exteriorProgressText);
 		interiorProgressText = (TextView) findViewById(R.id.interiorProgressText);
 		documentProgressText = (TextView) findViewById(R.id.documentProgressText);
+		ratingLabel = (TextView) findViewById(R.id.ratingLabel);
+		ratingPercent = (TextView) findViewById(R.id.ratingPercent);
 
 		engineProgress = (ProgressBar) findViewById(R.id.engineProgress);
 		powerProgress = (ProgressBar) findViewById(R.id.powerProgress);
@@ -302,12 +312,30 @@ public class MainActivity extends Activity {
 		interiorProgress = (ProgressBar) findViewById(R.id.interiorProgress);
 		documentProgress = (ProgressBar) findViewById(R.id.documentProgress);
 
+		engineVolume = (SeekBar) findViewById(R.id.engineVolume);
+		powerVolume = (SeekBar) findViewById(R.id.powerVolume);
+		exteriorVolume = (SeekBar) findViewById(R.id.exteriorVolume);
+		interiorVolume = (SeekBar) findViewById(R.id.interiorVolume);
+		documentVolume = (SeekBar) findViewById(R.id.documentVolume);
+		
 		engineProgressText.setText("0 %");
 		powerProgressText.setText("0 %");
 		exteriorProgressText.setText("0 %");
 		interiorProgressText.setText("0 %");
 		documentProgressText.setText("0 %");
+		
+		engineVolume.setProgress(2);
+		powerVolume.setProgress(2);
+		exteriorVolume.setProgress(2);
+		interiorVolume.setProgress(2);
+		documentVolume.setProgress(2);
 
+		ratingLabel.setVisibility(View.INVISIBLE); // hide
+		ratingPercent.setVisibility(View.INVISIBLE); // hide
+		ratingProgress.setRotation(180);
+		ratingProgress.setVisibility(View.INVISIBLE); // hide
+		
+		
 		/*
 		 * ProgressBar engineProgress = (ProgressBar)
 		 * findViewById(R.id.engineProgress);
@@ -423,8 +451,8 @@ public class MainActivity extends Activity {
 		LinearLayout exterior_layoutBtn = (LinearLayout) findViewById(R.id.exterior_layoutBtn);
 		LinearLayout interior_layoutBtn = (LinearLayout) findViewById(R.id.interior_layoutBtn);
 		LinearLayout document_layoutBtn = (LinearLayout) findViewById(R.id.document_layoutBtn);
-		LinearLayout setting_layoutBtn = (LinearLayout) findViewById(R.id.setting_layoutBtn);
-
+		//LinearLayout setting_layoutBtn = (LinearLayout) findViewById(R.id.setting_layoutBtn);
+		ImageButton setting_layoutBtn = (ImageButton) findViewById(R.id.setting_layoutBtn);
 		allDialog.setAlpha(0.9f);
 
 		getPreferences(MODE_PRIVATE).edit().putInt("already", 1).commit();

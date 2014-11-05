@@ -1,5 +1,5 @@
 package com.example.nativecarchecklist;
 
-public class RatingCalculator {
+public class RatingCheckList {
 	
 }

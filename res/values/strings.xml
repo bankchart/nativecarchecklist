@@ -23,4 +23,6 @@
     <string name="saveBtn">Save</string>
     <string name="resetBtn">Reset</string>
     <string name="languageBtn">Change language</string>
+    <string name="rating">Rating of the vehicle.</string>
+    
 </resources>

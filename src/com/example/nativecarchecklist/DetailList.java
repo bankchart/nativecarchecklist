@@ -1,7 +1,5 @@
 package com.example.nativecarchecklist;
 
-import java.text.DecimalFormat;
-
 public class DetailList {
 
 	// private Map<String, Integer> list;

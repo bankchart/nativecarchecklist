@@ -257,14 +257,62 @@
             android:textColor="@color/orange"
             android:textSize="@dimen/size1"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/setting_layoutBtn"
+    
+    <ImageButton
+            android:id="@+id/setting_layoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1110dp"
+            android:layout_marginTop="40dp"
+            android:adjustViewBounds="true"
+            android:maxHeight="220dp"
+            android:maxWidth="220dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/setting" />
+    
+    <TextView 
+        android:id="@+id/ratingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="980dp"
-        android:layout_marginTop="-50dp"
-        android:orientation="vertical" >
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="@string/rating"
+        android:layout_marginLeft="820dp"
+        android:layout_marginTop="70dp"
+        android:layout_alignTop="@id/setting_layoutBtn" />
+    
+    <TextView
+        android:id="@+id/ratingPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_marginLeft="1010dp"
+        android:layout_marginTop="110dp"
+        android:text="50 %" />
+    
+    <ProgressBar
+            android:id="@+id/ratingProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="1070dp"
+            android:layout_marginTop="114dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progressDrawable="@drawable/progress_ratingbg"
+            android:minHeight="18dp"
+            android:minWidth="90dp"
+            android:progress="50" />
+    
+    <!-- LinearLayout
+        android:id="@+id/setting_layoutBtn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="950dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/myborder_setting" >
 
         <ImageView
             android:id="@+id/settingBtn"
@@ -273,10 +321,10 @@
             android:layout_marginLeft="120dp"
             android:layout_marginTop="80dp"
             android:adjustViewBounds="true"
-            android:maxHeight="120dp"
-            android:maxWidth="120dp"
+            android:maxHeight="220dp"
+            android:maxWidth="220dp"
             android:src="@drawable/setting" />
-    </LinearLayout>
+    </LinearLayout -->
 
     <LinearLayout
         android:id="@+id/engineLayout"
